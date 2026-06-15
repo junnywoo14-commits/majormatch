@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Major Match</title>
+
+  <!-- Fonts: Bricolage Grotesque (display) + Plus Jakarta Sans (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Plus+Jakarta+Sans:ital,wght@0,400..800;1,400..600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- The whole app lives inside app-root. The topbar is always shown;
+       #root is where JavaScript swaps in the welcome / quiz / results screens. -->
+  <div class="app-root anim" id="appRoot">
+    <div class="app-bg" aria-hidden="true"></div>
+
+    <div class="topbar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <span class="brand-name">Major Match</span>
+      </div>
+      <span class="tag-pill">AI × STEM Education</span>
+    </div>
+
+    <div id="root"></div>
+  </div>
+
+  <canvas id="confetti"></canvas>
+
+  <!-- Data first, then the scoring engine that uses it, then the app. -->
+  <script src="data.js"></script>
+  <script src="scoring.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

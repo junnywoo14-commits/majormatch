@@ -1,0 +1,9 @@
+{
+  "name": "majormatch",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Major Match — quiz that matches students to college majors, with an AI advisor.",
+  "scripts": {
+    "dev": "node dev-server.js"
+  }
+}
