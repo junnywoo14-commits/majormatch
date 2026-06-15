@@ -4,7 +4,7 @@
 
 ### Find the college major that fits the way you think.
 
-**[ ▶ Try the live demo ](https://REPLACE-WITH-YOUR-VERCEL-URL.vercel.app)**
+**[ ▶ Try the live demo ](https://majormatchdeltastem.vercel.app)**
 
 *A 4-minute interests quiz that matches students to college majors — then uses AI to
 tell them how to start. No sign-up. Free.*
