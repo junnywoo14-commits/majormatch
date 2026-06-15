@@ -11,6 +11,10 @@ tell them how to start. No sign-up. Free.*
 
 Hackathon submission · theme: **AI × STEM Education**
 
+<br>
+
+<img src="Screenshot.png" alt="Major Match welcome screen" width="760">
+
 </div>
 
 ---
@@ -30,9 +34,6 @@ personalized starting point.
    resources, and role models.
 4. **Get an AI plan** — a personalized note explaining *why* it fits you and 3 concrete
    first steps to take this month.
-
-<!-- Tip: add a screenshot or GIF here — judges love seeing it before clicking.
-     Drop an image in the repo and use:  ![Major Match](screenshot.png)  -->
 
 ## How it works
 
