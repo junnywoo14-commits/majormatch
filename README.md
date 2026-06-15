@@ -1,90 +1,92 @@
+<div align="center">
+
 # 🎓 Major Match
 
-**Find the college major that fits the way you think.**
+### Find the college major that fits the way you think.
 
-Lots of high schoolers have no idea what to study. Major Match is a quick interests
-quiz that matches a student to college majors using a real similarity algorithm, then
-uses AI to give them a personalized, encouraging plan to get started.
+**[ ▶ Try the live demo ](https://REPLACE-WITH-YOUR-VERCEL-URL.vercel.app)**
 
-Built for a hackathon · theme: **AI × STEM Education**.
+*A 4-minute interests quiz that matches students to college majors — then uses AI to
+tell them how to start. No sign-up. Free.*
+
+Hackathon submission · theme: **AI × STEM Education**
+
+</div>
 
 ---
+
+## The problem
+
+Most high schoolers have to choose courses now and a major soon — with almost no idea
+what actually fits them. "What should I study?" usually gets answered by guessing, or
+by whatever their friends are doing. Major Match turns that blank stare into a ranked,
+personalized starting point.
+
+## What it does
+
+1. **Answer 18 quick questions** about what you enjoy (rate 1–5).
+2. **Get matched** to college majors by a real similarity algorithm.
+3. **Explore** your best fit: match score, related careers + salaries, free starter
+   resources, and role models.
+4. **Get an AI plan** — a personalized note explaining *why* it fits you and 3 concrete
+   first steps to take this month.
+
+<!-- Tip: add a screenshot or GIF here — judges love seeing it before clicking.
+     Drop an image in the repo and use:  ![Major Match](screenshot.png)  -->
 
 ## How it works
 
 ```
-[ 18-question quiz ]  →  [ score into 8 interest traits ]  →  [ rank majors by
-                                                                cosine similarity ]
-                                                                      ↓
-[ AI advisor writes a personalized note + 3 first steps ]  ←  [ top major + traits ]
+18-question quiz  →  score into 8 interest traits  →  rank majors by cosine similarity
+                                                              │
+        AI advisor: personalized note + 3 first steps  ←──────┘
 ```
 
-1. **Quiz** — the student rates 18 statements (1–5). No sign-up.
-2. **Matching (the "ML" part)** — each answer adds to a vector of 8 interest traits
-   (analytical, creative, social, etc.). Each major is also a trait vector. We rank
-   majors by **cosine similarity** between the student's vector and each major's —
-   the same idea behind recommendation systems. See [`scoring.js`](scoring.js).
-3. **Results** — best-fit major with a match %, runner-up majors, careers + salaries,
-   free starter resources, and role models.
-4. **AI advisor** — the student's traits + top major are sent to Google Gemini, which
-   writes a short personalized explanation and 3 concrete first steps. The API key
-   stays on the server and is never exposed to the browser. See [`lib/advisor.js`](lib/advisor.js).
+- **The matching is real ML, not a lookup.** Each answer builds a vector across 8
+  interest traits; each major is also a trait vector. Majors are ranked by **cosine
+  similarity** — the same math behind recommendation engines.
+- **The AI is grounded in the result.** The student's strongest traits + top major are
+  sent to Google Gemini, which writes the personalized plan. The API key lives on the
+  server and is never exposed to the browser.
+- **Zero friction.** No login, no install to use the live demo.
 
-## Tech stack
+## Built with
 
-- **Frontend:** plain HTML / CSS / JavaScript — no framework, no build step.
-- **Backend:** a tiny Node server (`dev-server.js`) locally, or a Vercel serverless
-  function (`api/advisor.js`) when deployed. Both share one brain, `lib/advisor.js`.
-- **AI:** Google Gemini (free tier).
+`Vanilla HTML / CSS / JavaScript` (no framework, no build step) · `Node` serverless
+backend · `Google Gemini` for the AI advisor · deployed on `Vercel`.
 
 ---
 
-## Run it locally
+<details>
+<summary><b>Run it locally</b> (for anyone who wants to read or extend the code)</summary>
 
-You need [Node.js](https://nodejs.org) (v21+) and a **free** Gemini API key.
+Requires [Node.js](https://nodejs.org) (v21+) and a free
+[Gemini API key](https://aistudio.google.com/apikey).
 
 ```bash
-# 1. clone and enter
 git clone https://github.com/junnywoo14-commits/majormatch.git
 cd majormatch
-
-# 2. add your free Gemini key
-cp .env.example .env
-#    then open .env and paste your key from https://aistudio.google.com/apikey
-
-# 3. run
-node dev-server.js
+cp .env.example .env     # then paste your free Gemini key into .env
+node dev-server.js       # open http://localhost:3000
 ```
 
-Open **http://localhost:3000**, take the quiz, and the AI advisor appears on the
-results page. (Press `Ctrl+C` to stop.)
+No `npm install` needed — zero dependencies. The quiz, matching, and results work
+without a key; only the AI advisor needs one.
 
-> No `npm install` needed — there are zero dependencies.
+</details>
 
-> The quiz, matching, and results work even without a key; only the AI advisor card
-> needs one.
-
-## Deploy (optional)
-
-It also runs on [Vercel](https://vercel.com) with no config:
-
-```bash
-npx vercel            # first deploy
-npx vercel env add GEMINI_API_KEY   # paste your key
-npx vercel --prod     # redeploy with the key
-```
-
----
-
-## Project structure
+<details>
+<summary><b>Project structure</b></summary>
 
 | File | What it does |
 |------|--------------|
 | `index.html` | Page shell + fonts |
-| `style.css` | All styling (warm, earthy design system) |
+| `style.css` | Styling (warm, earthy design system) |
 | `data.js` | 8 traits · 18 questions · 15 majors |
 | `scoring.js` | Cosine-similarity matching engine |
 | `script.js` | The three screens: welcome → quiz → results |
 | `lib/advisor.js` | Calls Gemini for the personalized note (server-side) |
 | `dev-server.js` | Local server (static files + `/api/advisor`) |
 | `api/advisor.js` | Vercel serverless version of the same endpoint |
+
+</details>
